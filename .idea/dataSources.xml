@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="tree" uuid="7bd0971d-24a0-41ff-b87f-e3697855f7bd">
+    <data-source source="LOCAL" name="tree" uuid="69f4f606-d9d6-4e0a-9f99-e76f69f1c574">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\Alvar\OneDrive\Escritorio\Propylon test\tree.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\Alvar\OneDrive\Escritorio\propylon-test\backend\tree.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>

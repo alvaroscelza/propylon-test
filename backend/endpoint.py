@@ -1,8 +1,20 @@
 from flask import Flask, jsonify
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
-from database_importer import TreeNode, session
+from backend.data_structures import TreeNode
 
 app = Flask(__name__)
+
+# Create a SQLAlchemy model to represent the tree
+Base = declarative_base()
+
+# Create a SQLite database and add the tree data
+engine = create_engine('sqlite:///tree.db', connect_args={'check_same_thread': False})
+Base.metadata.create_all(engine)
+Session = sessionmaker(bind=engine)
+session = Session()
 
 
 @app.route('/api/tree/<int:element_id>', methods=['GET'])
