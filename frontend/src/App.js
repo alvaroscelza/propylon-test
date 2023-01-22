@@ -26,7 +26,7 @@ function TreeView({data = [], level = 0}) {
         <ul>
             {treeData.map(node => (
                 <li key={node.id}>
-                    {"\t".repeat(node.level)} {node.name}
+                    {'*'.repeat(node.level * node.level)} {node.name}
                 </li>
             ))}
         </ul>
