@@ -21,8 +21,8 @@ session = Session()
 
 @app.route('/api/tree/<int:element_id>', methods=['GET'])
 def get_tree(element_id):
-    # retrieve children of the passed element_id
-    children_nodes = session.query(TreeNode).filter_by(parent_id=element_id).limit(20)
+    element = session.query(TreeNode).filter_by(id=element_id).first()
+    children_nodes = session.query(TreeNode).filter(TreeNode.level > element.level, TreeNode.parent_id == element.id).limit(20)
     # create response
     response = []
     for child in children_nodes:

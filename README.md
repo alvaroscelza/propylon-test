@@ -3,6 +3,11 @@
 This project is a backend application that imports a JSON file with hierarchical tree structure into a database, 
 and provides an API endpoint to retrieve the next 20 elements from the tree based on a specific element ID.
 
+WARNINGS:
+- Some data docs have repeated ids, so I am generating auto incremented ids instead.
+- '(...) returns the next 20 elements from the tree.' means: 20 elements whose parent is element, with a higher level 
+that the given element and with a subchapter. Like Chapters 1.1 (level 2) or 1.2.3 (level 3) are for Chapter 1 (level 1).
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
