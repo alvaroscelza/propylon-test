@@ -51,7 +51,7 @@ These instructions will get you a copy of the project up and running on your loc
     This command will create the database and import the data from the JSON file
 
 ##### API Endpoints
-- `/api/tree` : Retrieves the next 20 elements from the tree based on a specific element ID passed as a parameter.
+- `/api/tree/<int:element_id>` : Retrieves the next 20 elements from the tree based on a specific element ID passed as a parameter.
 
 ---------------------------------------------------------------------------------
 

@@ -1,4 +1,5 @@
-from flask import Flask, jsonify
+from flask import Flask
+from flask_cors import CORS
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -6,6 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from backend.data_structures import TreeNode
 
 app = Flask(__name__)
+CORS(app, origins=["http://localhost:3000"])
 
 # Create a SQLAlchemy model to represent the tree
 Base = declarative_base()
@@ -25,7 +27,7 @@ def get_tree(element_id):
     response = []
     for child in children_nodes:
         response.append({'name': child.name, 'level': child.level})
-    return jsonify(response)
+    return response
 
 
 if __name__ == '__main__':

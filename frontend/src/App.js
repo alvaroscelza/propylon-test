@@ -1,29 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 
-function TreeView() {
-  const [treeData, setTreeData] = useState([]);
+function TreeView({data = [], level = 0}) {
+    const [treeData, setTreeData] = useState(data);
+    const [elementId, setElementId] = useState(1);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('http://127.0.0.1:5000/api/tree/1');
-      const data = await response.json();
-      setTreeData(data);
-    }
-    fetchData();
-  }, []);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const response = await fetch(`http://127.0.0.1:5000/api/tree/${elementId}`);
+        const data = await response.json();
+        setTreeData(data);
+    };
 
-  return (
-    <ul>
-      {treeData.map((node) => (
-        <li key={node.id}>
-          {node.name}
-          {node.children && (
-            <TreeView data={node.children} />
-          )}
-        </li>
-      ))}
-    </ul>
-  );
+    return (<div>
+        <form onSubmit={handleSubmit}>
+            <label>
+                Element Id:
+                <input
+                    type="number"
+                    value={elementId}
+                    onChange={e => setElementId(e.target.value)}
+                />
+            </label>
+            <button type="submit">Submit</button>
+        </form>
+        <ul>
+            {treeData.map(node => (
+                <li key={node.id}>
+                    {"\t".repeat(node.level)} {node.name}
+                </li>
+            ))}
+        </ul>
+    </div>);
 }
 
 export default TreeView;
