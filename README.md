@@ -7,6 +7,7 @@ WARNINGS:
 - Some data docs have repeated ids, so I am generating auto incremented ids instead.
 - '(...) returns the next 20 elements from the tree.' means: 20 elements whose parent is element, with a higher level 
 that the given element and with a subchapter. Like Chapters 1.1 (level 2) or 1.2.3 (level 3) are for Chapter 1 (level 1).
+- Since the data passed to the backend is the element id, you have to check that id from the database (file 'tree.db')
 
 ## Getting Started
 

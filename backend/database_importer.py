@@ -18,13 +18,8 @@ session = Session()
 
 for document in documents:
     # create the node
-    db_node = TreeNode(name=document['name'], level=document['level'])
+    chapter_number = document['name'].split('Chapter ')[1]
+    db_node = TreeNode(name=document['name'], chapter_number=chapter_number, level=document['level'])
     session.add(db_node)
     session.commit()
-    # Get parent of the current node
-    parent_node = session.query(TreeNode).filter_by(level=document['level']-1).first()
-    # If parent exist
-    if parent_node:
-        # set the parent_id
-        db_node.parent_id = parent_node.id
-        session.commit()
+    session.close()
